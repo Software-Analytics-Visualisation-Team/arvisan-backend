@@ -1,7 +1,6 @@
 services:
   frontend:
     build: ../arvisan-frontend
-    image: yoronex/arvisan-frontend:latest
     restart: 'unless-stopped'
     ports:
       - 5173:80
@@ -9,17 +8,16 @@ services:
       - arvisan
   backend:
     build: .
-    image: yoronex/arvisan-backend:latest
     restart: 'unless-stopped'
     networks:
       - arvisan
     environment:
-      - NEO4J_URL=bolt://neo4j:7687 # Use bolt://host.docker.internal:7687 when using local neo4j instance
+      - NEO4J_URL=bolt://host.docker.internal:7687 #when using local neo4j instance
       - NEO4J_USERNAME=neo4j
       - NEO4J_PASSWORD=ChangeMe!Ord0nt
       - NEO4J_QUERY_TIMEOUT=10000
-      - HTTP_BASIC_AUTH_USERNAME=
-      - HTTP_BASIC_AUTH_PASSWORD=
+      - HTTP_BASIC_AUTH_USERNAME=test_user
+      - HTTP_BASIC_AUTH_PASSWORD=test_password
       - HTTP_FRONTEND_URL=http://localhost:5173
       - UNCATEGORIZED_DOMAIN_NODE_NAME=no_domain
       - GRAPH_IMPORT_LOCATION=/import
@@ -32,9 +30,9 @@ services:
     restart: 'unless-stopped'
     networks:
       - arvisan
-    # ports:
-    #   - 7474:7474
-    #   - 7687:7687
+    ports:
+      - 7474:7474
+      - 7687:7687
     environment:
       - NEO4J_AUTH=neo4j/ChangeMe!Ord0nt
       - NEO4J_apoc_export_file_enabled=true
