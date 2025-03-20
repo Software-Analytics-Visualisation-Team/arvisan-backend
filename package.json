@@ -17,7 +17,7 @@
     "@tsoa/cli": "https://gitpkg.now.sh/Yoronex/tsoa/packages/cli?master",
     "@tsoa/runtime": "https://gitpkg.now.sh/Yoronex/tsoa/packages/runtime?master",
     "archiver": "^7.0.1",
-    "arvisan-input-parser": "github:Yoronex/arvisan-input-parser",
+    "arvisan-input-parser": "github:Software-Analytics-Visualisation-Team/arvisan-input-parser",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
