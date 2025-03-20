@@ -18,6 +18,7 @@ export type INeo4jNodeProperties = {
   id: string;
   simpleName: string;
   fullName: string;
+  nodeProperties: string;
   dependencyProfileCategory?: ModuleDependencyProfileCategory;
   cohesion?: number;
 

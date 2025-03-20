@@ -72,6 +72,7 @@ export default class ElementParserService {
         layer: this.getLongestLabel(node.labels),
         color: node.properties.color,
         selected: ('selected' in node && node.selected) || node.elementId === selectedId ? 'true' : 'false',
+        nodeProperties: node.properties.nodeProperties,
         dependencyProfileCategory: node.properties.dependencyProfileCategory,
         dependencyProfile: 'dependencyProfile' in node ? node.dependencyProfile : this.toDependencyProfile(node.properties.dependencyProfileCategory),
         cohesion: node.properties.cohesion,

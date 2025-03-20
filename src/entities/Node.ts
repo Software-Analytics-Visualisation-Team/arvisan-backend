@@ -21,7 +21,8 @@ export interface NodeData {
     color: string,
     /** Whether this node is selected or not */
     selected: 'true' | 'false',
-
+    /** A JSON string containing custom node properties to be used for extensions */
+    nodeProperties?: string,
     /** The type of dependency profile this node is. Only for bottom-layer nodes */
     dependencyProfileCategory?: ModuleDependencyProfileCategory;
     /**
