@@ -5,6 +5,7 @@ import Neo4jComponentNode from '../../entities/Neo4jComponentNode';
 import Violations from '../../entities/violations';
 import ViolationCyclicalDependenciesService from './ViolationCyclicalDependenciesService';
 import { ViolationLayerService } from './ViolationLayerService';
+import { DirectViolationService } from './ViolationDirectService';
 
 export default class ViolationService {
   private readonly client: Neo4jClient;
@@ -12,6 +13,7 @@ export default class ViolationService {
   public violations: Violations = {
     subLayers: [],
     dependencyCycles: [],
+    directViolations: [],
   };
 
   constructor() {
@@ -32,9 +34,14 @@ export default class ViolationService {
     await layerViolationService.markAndStoreLayerViolations(dependencies);
     const sublayerViolations = layerViolationService.extractLayerViolations();
 
+    const directViolationService = new DirectViolationService(this.client);
+    await directViolationService.markAndStoreViolations(dependencies);
+    const directViolations = directViolationService.extractDirectViolations();
+
     this.violations = {
       dependencyCycles: formattedCyclDeps,
       subLayers: sublayerViolations,
+      directViolations: directViolations,
     };
   }
 

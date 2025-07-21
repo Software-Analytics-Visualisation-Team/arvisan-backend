@@ -120,6 +120,7 @@ export default class ElementParserService {
         violations: {
           subLayer: 'violations' in edge ? edge.violations.subLayer : false,
           dependencyCycle: 'violations' in edge ? edge.violations.dependencyCycle : false,
+          directViolation: 'violations' in edge ? edge.violations.directViolation : false,
           any: 'violations' in edge ? edge.violations.subLayer || edge.violations.dependencyCycle : false,
         },
       },

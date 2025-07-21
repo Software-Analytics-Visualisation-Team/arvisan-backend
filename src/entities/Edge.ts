@@ -8,6 +8,7 @@ export interface Edge {
 export interface EdgeViolations {
   subLayer: boolean;
   dependencyCycle: boolean;
+  directViolation: boolean;
 }
 
 export interface EdgeReferences {

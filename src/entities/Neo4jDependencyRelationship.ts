@@ -34,6 +34,7 @@ export class Neo4jDependencyRelationship implements INeo4jComponentRelationship 
   violations: EdgeViolations = {
     subLayer: false,
     dependencyCycle: false,
+    directViolation: false,
   };
 
   identity: Integer;

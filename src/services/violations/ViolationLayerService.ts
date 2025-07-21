@@ -5,14 +5,11 @@ import {
 import { LayerViolation, LayerViolationSpec } from '../../entities/violations/LayerViolation';
 import ElementParserService from '../processing/ElementParserService';
 import { Neo4jClient } from '../../database/Neo4jClient';
-import { INeo4jComponentNode } from '../../database/entities';
+import { Neo4jViolation } from '../../entities/violations/Neo4jViolation';
 import Neo4jComponentNode from '../../entities/Neo4jComponentNode';
 import { MapSet } from '../../entities/MapSet';
 
-interface Neo4jViolation {
-  source: INeo4jComponentNode;
-  target: INeo4jComponentNode;
-}
+
 
 export class ViolationLayerService {
   private violatingRelationships: MapSet<Neo4jDependencyRelationship> = new MapSet();
