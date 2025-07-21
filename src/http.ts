@@ -25,6 +25,11 @@ export default async function createHttp() {
   app.use(bodyParser.json({ limit: '100mb' }));
   app.use(cors({ credentials: true, origin: process.env.HTTP_FRONTEND_URL }));
 
+  app.get('/swagger.json', (_req: ExRequest, res: ExResponse) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(apiDocs);
+  });
+  
   /**
    * HTTP Basic Auth on all endpoints. Only enabled if username and password are defined
    */
