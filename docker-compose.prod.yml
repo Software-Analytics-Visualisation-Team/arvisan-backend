@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build:
+      target: target
+    image: arvisan-frontend
+    container_name: arvisan-frontend
+    ports:
+      - 80:80
+
+  backend:
+    build:
+      target: target
+    image: arvisan-backend
+    container_name: arvisan-backend

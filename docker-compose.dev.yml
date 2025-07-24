@@ -1,0 +1,26 @@
+services:
+  frontend:
+    build:
+      target: dev
+    develop:
+      watch:
+        - action: sync
+          path: ./arvisan-frontend/src
+          target: /app/frontend/src
+    image: arvisan-frontend-dev
+    container_name: arvisan-frontend-dev
+    ports:
+      - 5173:5173
+    environment:
+      - VITE_API_URL=http://arvisan-backend-dev:3000
+
+  backend:
+    build:
+      target: dev
+    develop:
+      watch:
+        - action: sync
+          path: ./arvisan-backend/src
+          target: /app/backend/src
+    image: arvisan-backend-dev
+    container_name: arvisan-backend-dev
